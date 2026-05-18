@@ -342,7 +342,7 @@ function renderReview(review, isFirst) {
 }
 
 async function loadReviews() {
-  const response = await fetch(`${SUPABASE_URL}/rest/v1/reviews?order=id.asc`, {
+  const response = await fetch(`${SUPABASE_URL}/rest/v1/reviews?order=order.desc`,{
     headers: {
       apikey: SUPABASE_KEY,
       Authorization: `Bearer ${SUPABASE_KEY}`
