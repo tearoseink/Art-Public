@@ -141,6 +141,9 @@
   <!-- ── ADD REVIEW ── -->
   <h2>Add Review</h2>
   <div>
+    <label>Order (Reading List Number)</label>
+    <input type="text" id="review-order" placeholder="e.g. 83 for The Road" />
+
     <label>Title</label>
     <input type="text" id="review-title" placeholder="Book title" />
 
@@ -176,6 +179,9 @@
   <!-- ── ADD QUOTE ── -->
   <h2>Add Quote</h2>
   <div>
+    <label>Order (Reading List Number)</label>
+    <input type="text" id="quote-order" placeholder="e.g. 84 for Einstein's Dreams" />
+
     <label>Book Title</label>
     <input type="text" id="quote-book-title" placeholder="Book title" />
 
@@ -190,9 +196,6 @@
 
     <label>Date</label>
     <input type="text" id="quote-date" placeholder="January 2026" />
-
-    <label>Order (Reading List Number)</label>
-    <input type="text" id="quote-order" placeholder="e.g. 84 for Einstein's Dreams" />
 
     <label>Quote Text</label>
     <textarea id="quote-text" placeholder="The quote..." style="min-height: 150px;"></textarea>
@@ -232,8 +235,8 @@
         window.location.href = 'login.html'
     }
 
-    const SUPABASE_URL = 'https://bovnudbyavpevxgmlqts.supabase.co'
-    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJvdm51ZGJ5YXZwZXZ4Z21scXRzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc2OTU3MTIsImV4cCI6MjA5MzI3MTcxMn0.1iYpqgwp8-Sq2yCtaavmk7iRQQkf9FAF_yHs6u96jow'
+    const SUPABASE_URL = ''
+    const SUPABASE_KEY = ''
 
     async function postToSupabase(table, data, successId, errorId) {
       const response = await fetch(`${SUPABASE_URL}/rest/v1/${table}`, {
@@ -287,6 +290,7 @@ async function addReview() {
   const paragraphs = bodyText.split('\n').filter(p => p.trim() !== '')
 
   await postToSupabase('reviews', {
+    order: parseInt(document.getElementById('review-order').value),
     title: document.getElementById('review-title').value,
     author: document.getElementById('review-author').value,
     reviewer: document.getElementById('review-reviewer').value,
