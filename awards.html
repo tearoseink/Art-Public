@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Awards 2026 — Art Public</title>
+  <title>Awards — Art Public</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -259,7 +259,7 @@
     const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJvdm51ZGJ5YXZwZXZ4Z21scXRzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc2OTU3MTIsImV4cCI6MjA5MzI3MTcxMn0.1iYpqgwp8-Sq2yCtaavmk7iRQQkf9FAF_yHs6u96jow'
   
     async function loadAwards() {
-      const response = await fetch(`${SUPABASE_URL}/rest/v1/awards?year=eq.2026&order=id.asc`, {
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/awards?year=eq.2025&order=id.asc`, {
         headers: {
           apikey: SUPABASE_KEY,
           Authorization: `Bearer ${SUPABASE_KEY}`
