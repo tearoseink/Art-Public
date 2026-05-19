@@ -269,9 +269,6 @@
       const awards = await response.json()
       const container = document.querySelector('.awards-wrapper')
   
-      // Remove hardcoded award blocks
-      document.querySelectorAll('.award-block').forEach(el => el.remove())
-  
       awards.forEach(award => {
         container.innerHTML += `
           <div class="award-block">
