@@ -176,34 +176,20 @@
     <p class="error" id="review-error" style="display:none">Something went wrong.</p>
   </div>
 
-  <!-- ── ADD QUOTE ── -->
-  <h2>Add Quote</h2>
-  <div>
-    <label>Order (Reading List Number)</label>
-    <input type="text" id="quote-order" placeholder="e.g. 84 for Einstein's Dreams" />
+  <!-- ── ADD MARGINALIA ── -->
+<h2>Add Marginalia</h2>
+<div>
+  <label>Author</label>
+  <input type="text" id="marginalia-author" placeholder="Luke or Naomi" />
 
-    <label>Book Title</label>
-    <input type="text" id="quote-book-title" placeholder="Book title" />
+  <label>Body (400 characters max)</label>
+  <textarea id="marginalia-body" placeholder="A short thought..." style="min-height: 100px;" maxlength="400"></textarea>
+  <p id="marginalia-count" style="font-size: 0.75rem; color: #6b6560; margin-top: 0.4rem;">0 / 400</p>
 
-    <label>Book Author</label>
-    <input type="text" id="quote-book-author" placeholder="Author name" />
-
-    <label>Selected By</label>
-    <input type="text" id="quote-selected-by" placeholder="Luke or Naomi" />
-
-    <label>Genre</label>
-    <input type="text" id="quote-genre" placeholder="Fiction" />
-
-    <label>Date</label>
-    <input type="text" id="quote-date" placeholder="January 2026" />
-
-    <label>Quote Text</label>
-    <textarea id="quote-text" placeholder="The quote..." style="min-height: 150px;"></textarea>
-
-    <button onclick="addQuote()">Add Quote</button>
-    <p class="success" id="quote-success" style="display:none">Quote added!</p>
-    <p class="error" id="quote-error" style="display:none">Something went wrong.</p>
-  </div>
+  <button onclick="addMarginalia()">Add Post</button>
+  <p class="success" id="marginalia-success" style="display:none">Post added!</p>
+  <p class="error" id="marginalia-error" style="display:none">Something went wrong.</p>
+</div>
 
   <!-- ── ADD AWARD ── -->
   <h2>Add Award</h2>
@@ -218,7 +204,7 @@
     <input type="text" id="award-winner" placeholder="Book or character name" />
 
     <label>Detail</label>
-    <input type="text" id="award-detail" placeholder="Author · Reader · Month" />
+    <input type="text" id="award-detail" placeholder="Author" />
 
     <label>Notes & Nominations</label>
     <textarea id="award-note" placeholder="Why this won..."></textarea>
@@ -314,24 +300,27 @@ async function addReview() {
   document.getElementById('review-body').value = ''
 }
 
-async function addQuote() {
-  await postToSupabase('quotes', {
-    book_title: document.getElementById('quote-book-title').value,
-    book_author: document.getElementById('quote-book-author').value,
-    selected_by: document.getElementById('quote-selected-by').value,
-    genre: document.getElementById('quote-genre').value,
-    date: document.getElementById('quote-date').value,
-    quote_text: document.getElementById('quote-text').value,
-    order: parseInt(document.getElementById('quote-order').value)
-  }, 'quote-success', 'quote-error')
+// Character counter for marginalia
+document.getElementById('marginalia-body').addEventListener('input', function() {
+  document.getElementById('marginalia-count').textContent = `${this.value.length} / 400`
+})
 
-  document.getElementById('quote-book-title').value = ''
-  document.getElementById('quote-book-author').value = ''
-  document.getElementById('quote-selected-by').value = ''
-  document.getElementById('quote-genre').value = ''
-  document.getElementById('quote-date').value = ''
-  document.getElementById('quote-text').value = ''
-  document.getElementById('quote-order').value = ''
+async function addMarginalia() {
+  const body = document.getElementById('marginalia-body').value
+  if (body.length > 400) {
+    document.getElementById('marginalia-error').style.display = 'block'
+    return
+  }
+
+  await postToSupabase('marginalia', {
+    author: document.getElementById('marginalia-author').value,
+    date: new Date().toISOString(),
+    body: body
+  }, 'marginalia-success', 'marginalia-error')
+
+  document.getElementById('marginalia-author').value = ''
+  document.getElementById('marginalia-body').value = ''
+  document.getElementById('marginalia-count').textContent = '0 / 400'
 }
 
 async function addAward() {
@@ -349,6 +338,21 @@ async function addAward() {
   document.getElementById('award-detail').value = ''
   document.getElementById('award-note').value = ''
 }
+
+posts.forEach(post => {
+  const date = new Date(post.date)
+  const formatted = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
+  
+  container.innerHTML += `
+    <div class="post">
+      <div class="post-meta">
+        <span class="post-author">${post.author}</span>
+        <span class="post-date">${formatted}</span>
+      </div>
+      <p class="post-body">${post.body}</p>
+    </div>
+  `
+})
     function logout() {
         localStorage.removeItem('sb-session')
         window.location.href = 'login.html'}
