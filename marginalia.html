@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Marginalia — Art Public</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #666193;
+      --ink-light: #6b6560;
+      --accent: #d1a2a9;
+      --rule: #d8d2c8;
+    }
+
+    html { font-size: 18px; scroll-behavior: smooth; }
+
+    body {
+      background: #000000;
+      color: #FFFFFF;
+      font-family: 'EB Garamond', Georgia, serif;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── HEADER ── */
+    header {
+      padding: 2.5rem 2rem 1.5rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      background: #000000;
+      z-index: 100;
+    }
+
+    header::after {
+      content: '';
+      display: block;
+      width: 75%;
+      margin: 1.5rem auto 0;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    .site-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.9rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: #FFFFFF;
+      text-decoration: none;
+    }
+
+    nav {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.5rem;
+    }
+
+    nav a {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      text-decoration: none;
+      transition: color 0.2s;
+      font-family: 'Trebuchet MS', Georgia, serif;
+    }
+
+    nav a:hover { color: var(--accent); }
+    nav a.active { color: var(--accent); }
+
+    /* ── WRAPPER ── */
+    .marginalia-wrapper {
+      max-width: 680px;
+      margin: 5rem auto 6rem;
+      padding: 0 2rem;
+      animation: fadeUp 0.7s ease both;
+    }
+
+    /* ── PAGE HEADER ── */
+    .marginalia-label {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.80rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    .marginalia-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 5vw, 2.9rem);
+      font-weight: 400;
+      line-height: 1.2;
+      color: #FFFFFF;
+    }
+
+    .marginalia-description {
+      font-family: 'EB Garamond', serif;
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--ink-light);
+      margin-top: 0.75rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #1a1a1a;
+    }
+
+    /* ── POST ── */
+
+    .post-wrapper {
+        margin-bottom: 1.5rem; 
+    }
+
+    .post {
+      padding: 1.25rem 1.5rem;
+      border-bottom: none; 
+      border-radius: 50px; 
+    }
+
+    .post-luke {
+        background: var(--ink-light);
+    }
+
+    .post-naomi {
+        background-color: var(--ink);
+    }
+
+    .post-meta {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .post-author {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .post-date {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+    }
+
+    .post-body {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.05rem;
+      color: #FFFFFF;
+      line-height: 1.8;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #d1a2a9;
+      letter-spacing: 0.05em;
+      font-family: 'Trebuchet MS', Georgia, serif;
+    }
+
+    footer::before {
+      content: '';
+      display: block;
+      width: 75%;
+      margin: 0 auto 2rem;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 560px) {
+      header { padding: 1.5rem 1rem 1rem; }
+      .site-title { font-size: 1.5rem; }
+      nav { gap: 0.5rem 1rem; }
+      nav a { font-size: 0.7rem; }
+      .marginalia-wrapper { margin-top: 2.5rem; padding: 0 1.25rem; }
+      .post-body { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a class="site-title" href="index.html">Art Public</a>
+    <nav>
+        <a href="reading-list.html">Reading List</a>
+        <a href="review.html">Reviews</a>
+        <a href="awards.html">Awards</a>
+        <a href="marginalia.html" class="active">Chat</a>
+        <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <!-- MARGINALIA -->
+  <div class="marginalia-wrapper">
+
+    <h2 class="marginalia-label">Marginalia</h2>
+    <p class="marginalia-description">Short thoughts and observations from the tall, tall grass.</p>
+    <div id="posts-container"></div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Art Public</p>
+    <a href="login.html" style="display: block; text-align: center; margin-top: 1rem; font-size: 0.75rem; letter-spacing: 0.1em; color: #6b6560; text-decoration: none;">Publisher Login</a>
+  </footer>
+
+  <script>
+    const SUPABASE_URL = 'https://bovnudbyavpevxgmlqts.supabase.co'
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJvdm51ZGJ5YXZwZXZ4Z21scXRzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc2OTU3MTIsImV4cCI6MjA5MzI3MTcxMn0.1iYpqgwp8-Sq2yCtaavmk7iRQQkf9FAF_yHs6u96jow'
+
+    async function loadMarginalia() {
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/marginalia?order=id.desc`, {
+        headers: {
+          apikey: SUPABASE_KEY,
+          Authorization: `Bearer ${SUPABASE_KEY}`
+        }
+      })
+
+      const posts = await response.json()
+      const container = document.getElementById('posts-container')
+
+      if (posts.length === 0) {
+        container.innerHTML = `<p style="color: var(--ink-light); font-style: italic; padding-top: 2rem;">Nothing here yet.</p>`
+        return
+      }
+
+      posts.forEach(post => {
+        const date = new Date(post.date)
+        const formatted = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
+        const bubbleClass = post.author.toLowerCase().includes('luke') ? 'post-luke' : 'post-naomi'
+
+        container.innerHTML += `
+        <div class="post-wrapper">
+            <div class="post ${bubbleClass}">
+                <p class="post-body">${post.body}</p>
+            </div>
+          <div class="post-meta">
+              <span class="post-author">${post.author}</span>
+              <span class="post-date">${formatted}</span>
+            </div>
+        </div>`
+      })
+    }
+
+    loadMarginalia()
+  </script>
+
+</body>
+</html>
