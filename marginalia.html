@@ -126,8 +126,12 @@
         background: var(--ink-light);
     }
 
-    .post-naomi {
+    .post.hope {
         background-color: var(--ink);
+    }
+
+    .post-naomi {
+        background-color: var(--accent);
     }
 
     .post-meta {
@@ -248,7 +252,9 @@
       posts.forEach(post => {
         const date = new Date(post.date)
         const formatted = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
-        const bubbleClass = post.author.toLowerCase().includes('luke') ? 'post-luke' : 'post-naomi'
+        const bubbleClass = post.author.toLowerCase().includes('luke') ? 'post-luke' 
+        : post.author.toLowerCase().includes('hope') ? 'post-hope' 
+        : 'post-naomi'
 
         container.innerHTML += `
         <div class="post-wrapper">
