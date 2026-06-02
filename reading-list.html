@@ -252,13 +252,16 @@
     </nav>
   </header>
  
-  <!-- TABLE -->
+  <!-- 2026 TABLE -->
   <div class="table-wrapper">
- 
     <div class="section-label">2026</div>
- 
-    <div id="book-list"></div>
- 
+    <div id="book-list-2026"></div>
+  </div>
+
+  <!-- 2025 TABLE -->
+  <div class="table-wrapper">
+    <div class="section-label">2025</div>
+    <div id="book-list-2025"></div>
   </div>
  
   <!-- FOOTER -->
@@ -280,8 +283,8 @@
       .replace(/\s+/g, '-');
   }
 
-async function loadBooks() {
-  // Fetch reviewed titles from Supabase
+  async function loadBooks() {
+  // Fetch reviewed titles
   const reviewsResponse = await fetch(`${SUPABASE_URL}/rest/v1/reviews?select=title`, {
     headers: {
       apikey: SUPABASE_KEY,
@@ -289,20 +292,32 @@ async function loadBooks() {
     }
   })
   const reviews = await reviewsResponse.json()
-  const reviewedTitles = new Set(reviews.map(r => r.title.toLowerCase().trim()))
+  const reviewedTitles = new Set(reviews.map(r => r.title))
 
-  // Fetch books
-  const booksResponse = await fetch(`${SUPABASE_URL}/rest/v1/reading_list?year=eq.2026&order=id.asc`, {
+  // Fetch and render 2026
+  await renderYear(2026, 'book-list-2026', reviewedTitles)
+
+  // Fetch and render 2025
+  await renderYear(2025, 'book-list-2025', reviewedTitles)
+}
+
+async function renderYear(year, containerId, reviewedTitles) {
+  const booksResponse = await fetch(`${SUPABASE_URL}/rest/v1/reading_list?year=eq.${year}&order=id.asc`, {
     headers: {
       apikey: SUPABASE_KEY,
       Authorization: `Bearer ${SUPABASE_KEY}`
     }
   })
   const books = await booksResponse.json()
-  const container = document.getElementById('book-list')
+  const container = document.getElementById(containerId)
+
+  if (books.length === 0) {
+    container.innerHTML = `<p style="color: var(--ink-light); font-style: italic; padding: 1.5rem 0;">Nothing here yet.</p>`
+    return
+  }
 
   books.forEach(book => {
-    const reviewed = reviewedTitles.has(book.title.toLowerCase().trim())
+    const reviewed = reviewedTitles.has(book.title)
     const titleHTML = reviewed
       ? `<a class="book-title" href="review.html#${titleToId(book.title)}">${book.title}<span class="reviewed-badge">Review</span></a>`
       : `<span class="book-title">${book.title}</span>`
@@ -321,6 +336,8 @@ async function loadBooks() {
     `
   })
 }
+
+loadBooks()
 
   loadBooks()
 </script>
