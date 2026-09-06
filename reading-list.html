@@ -263,6 +263,12 @@
     <div class="section-label">2025</div>
     <div id="book-list-2025"></div>
   </div>
+
+    <!-- 2024 TABLE -->
+  <div class="table-wrapper">
+    <div class="section-label">2024</div>
+    <div id="book-list-2024"></div>
+  </div>
  
   <!-- FOOTER -->
   <footer>
@@ -299,6 +305,9 @@
 
   // Fetch and render 2025
   await renderYear(2025, 'book-list-2025', reviewedTitles)
+
+  // Fetch and render 2024
+  await renderYear(2024, 'book-list-2024', reviewedTitles)
 }
 
 async function renderYear(year, containerId, reviewedTitles) {
@@ -338,6 +347,7 @@ async function renderYear(year, containerId, reviewedTitles) {
 }
 
 loadBooks()
+
 </script>
  
 </body>
