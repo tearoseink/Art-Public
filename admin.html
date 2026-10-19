@@ -109,37 +109,20 @@
     <button onclick="logout()">Log Out</button>
   </div>
 
-  <!-- ── ADD BOOK TO READING LIST ── -->
-  <h2>Add to Reading List</h2>
-  <div>
-    <label>Number</label>
-    <input type="text" id="book-number" placeholder="98" />
+    <!-- ── ADD MARGINALIA ── -->
+<h2>Add Marginalia - Chat Feed</h2>
+<div>
+  <label>Author</label>
+  <input type="text" id="marginalia-author" placeholder="Luke or Naomi or Hope" />
 
-    <label>Title</label>
-    <input type="text" id="book-title" placeholder="Book title" />
+  <label>Body (400 characters max)</label>
+  <textarea id="marginalia-body" placeholder="A short thought..." style="min-height: 100px;" maxlength="400"></textarea>
+  <p id="marginalia-count" style="font-size: 0.75rem; color: #6b6560; margin-top: 0.4rem;">0 / 400</p>
 
-    <label>Author</label>
-    <input type="text" id="book-author" placeholder="Author name" />
-
-    <label>Reader</label>
-    <input type="text" id="book-reader" placeholder="Luke or Naomi" />
-
-    <label>Month</label>
-    <input type="text" id="book-month" placeholder="January" />
-
-    <label>Genre</label>
-    <input type="text" id="book-genre" placeholder="Fiction" />
-
-    <label>Nationality</label>
-    <input type="text" id="book-nationality" placeholder="American" />
-
-    <label>Year</label>
-    <input type="text" id="book-year" placeholder="2026" />
-
-    <button onclick="addBook()">Add Book</button>
-    <p class="success" id="book-success" style="display:none">Book added!</p>
-    <p class="error" id="book-error" style="display:none">Something went wrong.</p>
-  </div>
+  <button onclick="addMarginalia()">Add Post</button>
+  <p class="success" id="marginalia-success" style="display:none">Post added!</p>
+  <p class="error" id="marginalia-error" style="display:none">Something went wrong.</p>
+</div>
 
   <!-- ── ADD REVIEW ── -->
   <h2>Add Review</h2>
@@ -179,43 +162,91 @@
     <p class="error" id="review-error" style="display:none">Something went wrong.</p>
   </div>
 
-  <!-- ── ADD MARGINALIA ── -->
-<h2>Add Marginalia - Chat Feed</h2>
-<div>
-  <label>Author</label>
-  <input type="text" id="marginalia-author" placeholder="Luke or Naomi or Hope" />
+  <!-- ── ADD BOOK TO READING LIST ── -->
+  <h2>Add to Reading List</h2>
+  <div>
+    <label>Number</label>
+    <input type="text" id="book-number" placeholder="98" />
 
-  <label>Body (400 characters max)</label>
-  <textarea id="marginalia-body" placeholder="A short thought..." style="min-height: 100px;" maxlength="400"></textarea>
-  <p id="marginalia-count" style="font-size: 0.75rem; color: #6b6560; margin-top: 0.4rem;">0 / 400</p>
+    <label>Title</label>
+    <input type="text" id="book-title" placeholder="Book title" />
 
-  <button onclick="addMarginalia()">Add Post</button>
-  <p class="success" id="marginalia-success" style="display:none">Post added!</p>
-  <p class="error" id="marginalia-error" style="display:none">Something went wrong.</p>
-</div>
+    <label>Author</label>
+    <input type="text" id="book-author" placeholder="Author name" />
+
+    <label>Reader</label>
+    <input type="text" id="book-reader" placeholder="Luke or Naomi" />
+
+    <label>Month</label>
+    <input type="text" id="book-month" placeholder="January" />
+
+    <label>Genre</label>
+    <input type="text" id="book-genre" placeholder="Fiction" />
+
+    <label>Nationality</label>
+    <input type="text" id="book-nationality" placeholder="American" />
+
+    <label>Year</label>
+    <input type="text" id="book-year" placeholder="2026" />
+
+    <button onclick="addBook()">Add Book</button>
+    <p class="success" id="book-success" style="display:none">Book added!</p>
+    <p class="error" id="book-error" style="display:none">Something went wrong.</p>
+  </div>
 
   <!-- ── ADD AWARD ── -->
   <h2>Add Award</h2>
   <div>
     <label>Year</label>
-    <input type="text" id="award-year" placeholder="2026" />
+    <input type="text" id="award-year" placeholder="2025" />
 
     <label>Category</label>
-    <input type="text" id="award-category" placeholder="Best Book" />
+    <select id="award-category">
+      <option value="">Select a category</option>
+      <option>Best Book</option>
+      <option>Best Writing</option>
+      <option>Best Non-Fiction</option>
+      <option>Best Supporting Character</option>
+      <option>Best Character</option>
+    </select>
 
     <label>Winner</label>
     <input type="text" id="award-winner" placeholder="Book or character name" />
 
-    <label>Detail</label>
-    <input type="text" id="award-detail" placeholder="Author" />
+    <label>Author</label>
+    <input type="text" id="award-author" placeholder="Author" />
 
-    <label>Notes & Nominations</label>
-    <textarea id="award-note" placeholder="Why this won..."></textarea>
+    <label>Honorable Mention</label>
+    <textarea id="award-honorable" placeholder="Honorable mentions..."></textarea>
 
     <button onclick="addAward()">Add Award</button>
     <p class="success" id="award-success" style="display:none">Award added!</p>
     <p class="error" id="award-error" style="display:none">Something went wrong.</p>
   </div>
+
+   <!-- ── ADD NOMINATION ── -->
+   <h2>Add Nomination</h2>
+   <div>
+     <label>Year</label>
+     <input type="text" id="nom-year" placeholder="2025" />
+ 
+     <label>Category</label>
+     <select id="nom-category">
+       <option value="">Select a category</option>
+       <option>Best Book</option>
+       <option>Best Writing</option>
+       <option>Best Non-Fiction</option>
+       <option>Best Supporting Character</option>
+       <option>Best Character</option>
+     </select>
+ 
+     <label>Nominee</label>
+     <input type="text" id="nom-detail" placeholder="Aravind Adiga" />
+ 
+     <button onclick="addNomination()">Add Nomination</button>
+     <p class="success" id="nom-success" style="display:none">Nomination added!</p>
+     <p class="error" id="nom-error" style="display:none">Something went wrong.</p>
+   </div>
 
   <script>
     // Check if logged in
@@ -331,31 +362,26 @@ async function addAward() {
     year: parseInt(document.getElementById('award-year').value),
     category: document.getElementById('award-category').value,
     winner: document.getElementById('award-winner').value,
-    detail: document.getElementById('award-detail').value,
-    note: document.getElementById('award-note').value
+    author: document.getElementById('award-author').value,
+    honorable: document.getElementById('award-honorable').value
   }, 'award-success', 'award-error')
 
-  document.getElementById('award-year').value = ''
   document.getElementById('award-category').value = ''
   document.getElementById('award-winner').value = ''
-  document.getElementById('award-detail').value = ''
-  document.getElementById('award-note').value = ''
+  document.getElementById('award-author').value = ''
+  document.getElementById('award-honorable').value = ''
 }
 
-posts.forEach(post => {
-  const date = new Date(post.date)
-  const formatted = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
-  
-  container.innerHTML += `
-    <div class="post">
-      <div class="post-meta">
-        <span class="post-author">${post.author}</span>
-        <span class="post-date">${formatted}</span>
-      </div>
-      <p class="post-body">${post.body}</p>
-    </div>
-  `
-})
+async function addNomination() {
+  await postToSupabase('nominations', {
+    year: parseInt(document.getElementById('nom-year').value),
+    category: document.getElementById('nom-category').value,
+    detail: document.getElementById('nom-detail').value
+  }, 'nom-success', 'nom-error')
+
+  // Keep year and category so you can add several nominees in a row
+  document.getElementById('nom-detail').value = ''
+}
     function logout() {
         localStorage.removeItem('sb-session')
         window.location.href = 'login.html'}
