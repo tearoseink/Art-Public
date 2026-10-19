@@ -3,301 +3,389 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Awards 2026 — Art Public</title>
+  <title>Admin — Art Public</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
- 
-    :root {
-      --ink: #666193;
-      --ink-light: #6b6560;
-      --accent: #d1a2a9;
-      --rule: #d8d2c8;
-    }
- 
-    html { font-size: 18px; scroll-behavior: smooth; }
- 
+
     body {
       background: #000000;
       color: #FFFFFF;
-      font-family: 'EB Garamond', Georgia, serif;
-      line-height: 1.8;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    img {
-      max-width: 100%;
-      height: auto; 
-    }
- 
-    /* ── HEADER ── */
-    header {
-      padding: 2.5rem 2rem 1.5rem;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      background: #000000;
-      z-index: 100;
-    }
- 
-    header::after {
-      content: '';
-      display: block;
-      width: 75%;
-      margin: 1.5rem auto 0;
-      height: 1px;
-      background: var(--rule);
-    }
- 
-    .site-title {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: 1.9rem;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-      color: #FFFFFF;
-      text-decoration: none;
-    }
- 
-    nav {
-      margin-top: 1rem;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 0.75rem 1.5rem;
-    }
- 
-    nav a {
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--ink-light);
-      text-decoration: none;
-      transition: color 0.2s;
       font-family: 'Trebuchet MS', Georgia, serif;
-    }
- 
-    nav a:hover { color: var(--accent); }
-    nav a.active { color: var(--accent); }
- 
-    /* ── WRAPPER ── */
-    .awards-wrapper {
+      line-height: 1.75;
+      padding: 3rem 2rem;
       max-width: 680px;
-      margin: 3rem auto 6rem;
-      padding: 0 2rem;
-      animation: fadeUp 0.7s ease both;
-    }
- 
-    /* ── PAGE HEADER ── */
-    .awards-label {
-      font-family: 'Courier Prime', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1.5rem;
-    }
- 
-    .awards-title {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: clamp(2rem, 5vw, 2.9rem);
-      font-weight: 400;
-      line-height: 1.2;
-      color: #FFFFFF;
+      margin: 0 auto;
     }
 
-    .award-book {
-      height: 9rem; 
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      color: #d1a2a9;
+    }
 
-    }
- 
-    .awards-meta {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem 1.5rem;
-      margin-top: 1.75rem;
-      padding-bottom: 1.75rem;
-      border-bottom: 1px solid #1a1a1a;
-    }
- 
-    .meta-item {
-      font-family: 'Trebuchet MS', monospace;
-      font-size: 0.65rem;
+    h2 {
+      font-size: 1.1rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--ink-light);
-    }
- 
-    .meta-item span {
-      display: block;
-      text-align: center;
-      color: #FFFFFF;
-      margin-top: 0.2rem;
-      font-size: 0.72rem;
-    }
- 
-    .meta-divider {
-      width: 1px;
-      height: 2rem;
-      background: #1a1a1a;
-    }
- 
-    /* ── AWARD BLOCK ── */
-    .award-block {
-      padding: 2rem 0;
-      border-bottom: 1px solid #1a1a1a;
-    }
- 
-    .award-category {
-      font-family: 'Courier Prime', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.6rem;
-    }
- 
-    .award-winner {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: 1.4rem;
-      font-style: italic;
-      font-weight: 400;
-      color: #FFFFFF;
-      line-height: 1.3;
-    }
- 
-    .award-detail {
-      font-family: 'EB Garamond', serif;
-      font-size: 0.95rem;
-      color: var(--ink-light);
-      margin-top: 0.3rem;
-    }
- 
-    .award-note {
-      font-family: 'EB Garamond', serif;
-      font-size: 1rem;
-      color: #cccccc;
-      margin-top: 0.75rem;
-      line-height: 1.7;
-    }
- 
-    /* ── FOOTER ── */
-    footer {
-      padding: 2rem;
-      text-align: center;
-      font-size: 0.8rem;
       color: #d1a2a9;
-      letter-spacing: 0.05em;
+      margin: 3rem 0 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid #d1a2a9;
+    }
+
+    label {
       font-family: 'Trebuchet MS', Georgia, serif;
-    }
- 
-    footer::before {
-      content: '';
       display: block;
-      width: 75%;
-      margin: 0 auto 2rem;
-      height: 1px;
-      background: var(--rule);
+      font-size: 0.92rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #aaa;
+      margin-bottom: 0.4rem;
+      margin-top: 1.25rem;
     }
- 
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(18px); }
-      to   { opacity: 1; transform: translateY(0); }
+
+    input, textarea, select {
+      width: 100%;
+      background: #0d0d0d;
+      border: 1px solid #1a1a1a;
+      color: #FFFFFF;
+      padding: 0.6rem 0.75rem;
+      font-family: 'Trebuchet MS', Georgia, serif;
+      font-size: 0.95rem;
+      border-radius: 2px;
     }
- 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 560px) {
-      header { padding: 1.5rem 1rem 1rem; }
-      .site-title { font-size: 1.5rem; }
-      nav { gap: 0.5rem 1rem; }
-      nav a { font-size: 0.7rem; }
- 
-      .awards-wrapper { margin-top: 2.5rem; padding: 0 1.25rem; }
-      .meta-divider { display: none; }
-      .award-winner { font-size: 1.2rem; }
-      .award-book {justify-content: center;}
+
+    ::placeholder {
+        color: #333333;
+        font-family: 'Courier Prime', monospace;
+        font-size: 0.9rem;
+}
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    button {
+      margin-top: 1.5rem;
+      padding: 0.6rem 1.6rem;
+      background: transparent;
+      border: 1px solid #666193;
+      color: #666193;
+      font-family: 'Trebuchet MS', Georgia, serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    button:hover {
+      background: #666193;
+      color: #FFFFFF;
+    }
+
+    .success {
+      margin-top: 1rem;
+      color: #d1a2a9;
+      font-size: 0.85rem;
+    }
+
+    .error {
+      margin-top: 1rem;
+      color: #ff6b6b;
+      font-size: 0.85rem;
     }
   </style>
 </head>
 <body>
+
+  <div style="display: flex; align-items: center; justify-content: space-between;">
+    <h1>Art Public Admin</h1>
+    <a href="index.html">
+      <button>Home</button>
+    </a>
+    <button onclick="logout()">Log Out</button>
+  </div>
+
+    <!-- ── ADD MARGINALIA ── -->
+<h2>Add Marginalia - Chat Feed</h2>
+<div>
+  <label>Author</label>
+  <input type="text" id="marginalia-author" placeholder="Luke or Naomi or Hope" />
+
+  <label>Body (400 characters max)</label>
+  <textarea id="marginalia-body" placeholder="A short thought..." style="min-height: 100px;" maxlength="400"></textarea>
+  <p id="marginalia-count" style="font-size: 0.75rem; color: #6b6560; margin-top: 0.4rem;">0 / 400</p>
+
+  <button onclick="addMarginalia()">Add Post</button>
+  <p class="success" id="marginalia-success" style="display:none">Post added!</p>
+  <p class="error" id="marginalia-error" style="display:none">Something went wrong.</p>
+</div>
+
+  <!-- ── ADD REVIEW ── -->
+  <h2>Add Review</h2>
+  <div>
+    <label>Order (Reading List Number)</label>
+    <input type="text" id="review-order" placeholder="e.g. 83 for The Road" />
+
+    <label>Title</label>
+    <input type="text" id="review-title" placeholder="Book title" />
+
+    <label>Author</label>
+    <input type="text" id="review-author" placeholder="Author name" />
+
+    <label>Reviewer</label>
+    <input type="text" id="review-reviewer" placeholder="Luke or Naomi" />
+
+    <label>Genre</label>
+    <input type="text" id="review-genre" placeholder="Fiction" />
+
+    <label>Date</label>
+    <input type="text" id="review-date" placeholder="January 2026" />
+
+    <label>Rating</label>
+    <input type="text" id="review-rating" placeholder="4" />
+
+    <label>Rating Max</label>
+    <input type="text" id="review-rating-max" placeholder="5" />
+
+    <label>Excerpt</label>
+    <textarea id="review-excerpt" placeholder="Short excerpt shown on homepage"></textarea>
+
+    <label>Body (one paragraph per line)</label>
+    <textarea id="review-body" placeholder="Write each paragraph on a new line..." style="min-height: 200px;"></textarea>
+
+    <button onclick="addReview()">Add Review</button>
+    <p class="success" id="review-success" style="display:none">Review added!</p>
+    <p class="error" id="review-error" style="display:none">Something went wrong.</p>
+  </div>
+
+  <!-- ── ADD BOOK TO READING LIST ── -->
+  <h2>Add to Reading List</h2>
+  <div>
+    <label>Number</label>
+    <input type="text" id="book-number" placeholder="98" />
+
+    <label>Title</label>
+    <input type="text" id="book-title" placeholder="Book title" />
+
+    <label>Author</label>
+    <input type="text" id="book-author" placeholder="Author name" />
+
+    <label>Reader</label>
+    <input type="text" id="book-reader" placeholder="Luke or Naomi" />
+
+    <label>Month</label>
+    <input type="text" id="book-month" placeholder="January" />
+
+    <label>Genre</label>
+    <input type="text" id="book-genre" placeholder="Fiction" />
+
+    <label>Nationality</label>
+    <input type="text" id="book-nationality" placeholder="American" />
+
+    <label>Year</label>
+    <input type="text" id="book-year" placeholder="2026" />
+
+    <button onclick="addBook()">Add Book</button>
+    <p class="success" id="book-success" style="display:none">Book added!</p>
+    <p class="error" id="book-error" style="display:none">Something went wrong.</p>
+  </div>
+
+  <!-- ── ADD AWARD ── -->
+  <h2>Add Award</h2>
+  <div>
+    <label>Year</label>
+    <input type="text" id="award-year" placeholder="2025" />
+
+    <label>Category</label>
+    <select id="award-category">
+      <option value="">Select a category</option>
+      <option>Best Book</option>
+      <option>Best Writing</option>
+      <option>Best Non-Fiction</option>
+      <option>Best Supporting Character</option>
+      <option>Best Character</option>
+    </select>
+
+    <label>Winner</label>
+    <input type="text" id="award-winner" placeholder="Book or character name" />
+
+    <label>Author</label>
+    <input type="text" id="award-author" placeholder="Author" />
+
+    <label>Honorable Mention</label>
+    <textarea id="award-honorable" placeholder="Honorable mentions..."></textarea>
+
+    <button onclick="addAward()">Add Award</button>
+    <p class="success" id="award-success" style="display:none">Award added!</p>
+    <p class="error" id="award-error" style="display:none">Something went wrong.</p>
+  </div>
+
+   <!-- ── ADD NOMINATION ── -->
+   <h2>Add Nomination</h2>
+   <div>
+     <label>Year</label>
+     <input type="text" id="nom-year" placeholder="2025" />
  
-  <!-- HEADER -->
-  <header>
-    <a class="site-title" href="index.html">Art Public</a>
-    <nav>
-      <a href="reading-list.html">Reading List</a>
-      <a href="review.html">Reviews</a>
-      <a href="awards.html" class="active">Awards</a>
-      <a href="marginalia.html">Chat</a>
-      <a href="about.html">About</a>
-    </nav>
-  </header>
+     <label>Category</label>
+     <select id="nom-category">
+       <option value="">Select a category</option>
+       <option>Best Book</option>
+       <option>Best Writing</option>
+       <option>Best Non-Fiction</option>
+       <option>Best Supporting Character</option>
+       <option>Best Character</option>
+     </select>
  
-  <!-- AWARDS -->
-  <article class="awards-wrapper">
-    <img src="awardbook.svg" class="award-book">
+     <label>Nominee</label>
+     <input type="text" id="nom-detail" placeholder="Aravind Adiga" />
  
-  <!-- <p class="awards-label">Annual Art Public Book Awards</p>
-    <h1 class="awards-title">2025</h1>-->
- 
-    <div class="awards-meta">
-      <div class="meta-item">
-        Readers
-        <span>Luke & Naomi Brown</span>
-      </div>
-      <div class="meta-divider"></div>
-      <div class="meta-item">
-        Books Read
-        <span>16</span>
-      </div>
-      <div class="meta-divider"></div>
-      <div class="meta-item">
-        Year
-        <span>2025</span>
-      </div>
-    </div>
-  </article>
- 
-  <!-- FOOTER -->
-  <footer>
-    <p>© 2026 Art Public</p>
-    <a href="login.html" style="display: block; text-align: center; margin-top: 1rem; font-size: 0.75rem; letter-spacing: 0.1em; color: #6b6560; text-decoration: none;">Publisher Login</a>
-  </footer>
-  
+     <button onclick="addNomination()">Add Nomination</button>
+     <p class="success" id="nom-success" style="display:none">Nomination added!</p>
+     <p class="error" id="nom-error" style="display:none">Something went wrong.</p>
+   </div>
 
   <script>
+    // Check if logged in
+    const session = localStorage.getItem('sb-session')
+    if (!session) {
+        window.location.href = 'login.html'
+    }
+
     const SUPABASE_URL = 'https://bovnudbyavpevxgmlqts.supabase.co'
     const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJvdm51ZGJ5YXZwZXZ4Z21scXRzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc2OTU3MTIsImV4cCI6MjA5MzI3MTcxMn0.1iYpqgwp8-Sq2yCtaavmk7iRQQkf9FAF_yHs6u96jow'
-  
-    async function loadAwards() {
-      const response = await fetch(`${SUPABASE_URL}/rest/v1/awards?year=eq.2025&order=id.asc`, {
+
+    async function postToSupabase(table, data, successId, errorId) {
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/${table}`, {
+        method: 'POST',
         headers: {
           apikey: SUPABASE_KEY,
-          Authorization: `Bearer ${SUPABASE_KEY}`
-        }
+          Authorization: `Bearer ${SUPABASE_KEY}`,
+          'Content-Type': 'application/json',
+          Prefer: 'return=minimal'
+        },
+        body: JSON.stringify(data)
       })
-  
-      const awards = await response.json()
-      const container = document.querySelector('.awards-wrapper')
-  
-      // Remove hardcoded award blocks
-      document.querySelectorAll('.award-block').forEach(el => el.remove())
-  
-      awards.forEach(award => {
-        container.innerHTML += `
-          <div class="award-block">
-            <p class="award-category">${award.category}</p>
-            <p class="award-winner">${award.winner}</p>
-            <p class="award-detail">${award.detail}</p>
-            <p class="award-note">${award.note}</p>
-          </div>
-        `
-      })
+
+      const success = document.getElementById(successId)
+      const error = document.getElementById(errorId)
+
+      if (response.ok) {
+        success.style.display = 'block'
+        error.style.display = 'none'
+        setTimeout(() => success.style.display = 'none', 3000)
+      } else {
+        error.style.display = 'block'
+        success.style.display = 'none'
+      }
     }
-  
-    loadAwards()
+
+    async function addBook() {
+  await postToSupabase('reading_list', {
+    number: document.getElementById('book-number').value,
+    title: document.getElementById('book-title').value,
+    author: document.getElementById('book-author').value,
+    reader: document.getElementById('book-reader').value,
+    month: document.getElementById('book-month').value,
+    genre: document.getElementById('book-genre').value,
+    nationality: document.getElementById('book-nationality').value,
+    year: parseInt(document.getElementById('book-year').value)
+  }, 'book-success', 'book-error')
+
+  document.getElementById('book-number').value = ''
+  document.getElementById('book-title').value = ''
+  document.getElementById('book-author').value = ''
+  document.getElementById('book-reader').value = ''
+  document.getElementById('book-month').value = ''
+  document.getElementById('book-genre').value = ''
+  document.getElementById('book-nationality').value = ''
+  document.getElementById('book-year').value = ''
+}
+
+async function addReview() {
+  const bodyText = document.getElementById('review-body').value
+  const paragraphs = bodyText.split('\n').filter(p => p.trim() !== '')
+
+  await postToSupabase('reviews', {
+    order: parseInt(document.getElementById('review-order').value),
+    title: document.getElementById('review-title').value,
+    author: document.getElementById('review-author').value,
+    reviewer: document.getElementById('review-reviewer').value,
+    genre: document.getElementById('review-genre').value,
+    date: document.getElementById('review-date').value,
+    rating: document.getElementById('review-rating').value,
+    rating_max: document.getElementById('review-rating-max').value,
+    excerpt: document.getElementById('review-excerpt').value,
+    qa: false,
+    body: paragraphs
+  }, 'review-success', 'review-error')
+
+  document.getElementById('review-title').value = ''
+  document.getElementById('review-author').value = ''
+  document.getElementById('review-reviewer').value = ''
+  document.getElementById('review-genre').value = ''
+  document.getElementById('review-date').value = ''
+  document.getElementById('review-rating').value = ''
+  document.getElementById('review-rating-max').value = ''
+  document.getElementById('review-excerpt').value = ''
+  document.getElementById('review-body').value = ''
+}
+
+// Character counter for marginalia
+document.getElementById('marginalia-body').addEventListener('input', function() {
+  document.getElementById('marginalia-count').textContent = `${this.value.length} / 400`
+})
+
+async function addMarginalia() {
+  const body = document.getElementById('marginalia-body').value
+  if (body.length > 400) {
+    document.getElementById('marginalia-error').style.display = 'block'
+    return
+  }
+
+  await postToSupabase('marginalia', {
+    author: document.getElementById('marginalia-author').value,
+    date: new Date().toISOString(),
+    body: body
+  }, 'marginalia-success', 'marginalia-error')
+
+  document.getElementById('marginalia-author').value = ''
+  document.getElementById('marginalia-body').value = ''
+  document.getElementById('marginalia-count').textContent = '0 / 400'
+}
+
+async function addAward() {
+  await postToSupabase('awards', {
+    year: parseInt(document.getElementById('award-year').value),
+    category: document.getElementById('award-category').value,
+    winner: document.getElementById('award-winner').value,
+    author: document.getElementById('award-author').value,
+    honorable: document.getElementById('award-honorable').value
+  }, 'award-success', 'award-error')
+
+  document.getElementById('award-category').value = ''
+  document.getElementById('award-winner').value = ''
+  document.getElementById('award-author').value = ''
+  document.getElementById('award-honorable').value = ''
+}
+
+async function addNomination() {
+  await postToSupabase('nominations', {
+    year: parseInt(document.getElementById('nom-year').value),
+    category: document.getElementById('nom-category').value,
+    detail: document.getElementById('nom-detail').value
+  }, 'nom-success', 'nom-error')
+
+  // Keep year and category so you can add several nominees in a row
+  document.getElementById('nom-detail').value = ''
+}
+    function logout() {
+        localStorage.removeItem('sb-session')
+        window.location.href = 'login.html'}
   </script>
- 
+
 </body>
 </html>
