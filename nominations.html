@@ -232,9 +232,49 @@
       <a href="about.html">About</a>
     </nav>
   </header>
+
+  <!-- NOMINATIONS 2026 -->
+  <article class="nominations-wrapper" data-year="2026">
+    <img src="nomination.svg" class="nominations-book">
+    <div class="nominations-meta">
+      <div class="meta-item">
+        Year
+        <span>2026</span>
+      </div>
+      <div class="meta-divider"></div>
+      <div class="meta-item">
+        Books Read
+        <span></span>
+      </div>
+    </div>
+    <div class="nominations-block" data-category="Best Book">
+        <p class="nominations-category">Best Book</p>
+        <div class="nominations-entries"><p class="nominations-detail">—</p></div>
+      </div>
+      
+      <div class="nominations-block" data-category="Best Writing">
+        <p class="nominations-category">Best Writing</p>
+        <div class="nominations-entries"><p class="nominations-detail">—</p></div>
+      </div>
+      
+      <div class="nominations-block" data-category="Best Non-Fiction">
+        <p class="nominations-category">Best Non-Fiction</p>
+        <div class="nominations-entries"><p class="nominations-detail">—</p></div>
+      </div>
+      
+      <div class="nominations-block" data-category="Best Supporting Character">
+        <p class="nominations-category">Best Supporting Character</p>
+        <div class="nominations-entries"><p class="nominations-detail">—</p></div>
+      </div>
+      
+      <div class="nominations-block" data-category="Best Character">
+        <p class="nominations-category">Best Character</p>
+        <div class="nominations-entries"><p class="nominations-detail">—</p></div>
+      </div>
+  </article>  
  
-  <!-- NOMINATIONS -->
-  <article class="nominations-wrapper">
+  <!-- NOMINATIONS 2025 -->
+  <article class="nominations-wrapper" data-year="2025">
     <img src="nomination.svg" class="nominations-book">
     <div class="nominations-meta">
       <div class="meta-item">
@@ -286,44 +326,55 @@
   
     async function loadNominations() {
         try {
-            const response = await fetch(`${SUPABASE_URL}/rest/v1/nominations?year=eq.2025&order=id.asc`, {
-                headers: {
-                    apikey: SUPABASE_KEY, 
-                    Authorization: `Bearer ${SUPABASE_KEY}`
-                }
+            // No year filter, so we get every year in one request
+            const response = await fetch(`${SUPABASE_URL}/rest/v1/nominations?order=id.asc`, {
+            headers: {
+                apikey: SUPABASE_KEY,
+                Authorization: `Bearer ${SUPABASE_KEY}`
+            }
             })
             if (!response.ok) throw new Error(`Supabase returned ${response.status}`)
 
             const nominations = await response.json()
             const norm = s => (s || '').trim().toLowerCase()
 
-            // Map each static block by its category name 
+            // Handle each year's section on its own
+            document.querySelectorAll('.nominations-wrapper').forEach(section => {
+            const year = Number(section.dataset.year)
+
+            // Map this section's blocks by category
             const blocks = {}
-            document.querySelectorAll('.nominations-block').forEach(block => {
+            section.querySelectorAll('.nominations-block').forEach(block => {
                 blocks[norm(block.dataset.category)] = block
             })
             const filled = new Set()
 
-            nominations.forEach(nomination => {
+            nominations
+                .filter(n => n.year === year)
+                .forEach(nomination => {
                 const block = blocks[norm(nomination.category)]
-                if (!block) return // category in Supabase doesn't match any static block 
+                if (!block) return
 
                 const entries = block.querySelector('.nominations-entries')
 
-                // Clear the "-" placeholder the first time this category gets an entry 
+                // Clear the "—" placeholder the first time this category gets an entry
                 if (!filled.has(block)) {
                     entries.innerHTML = ''
                     filled.add(block)
                 }
+
                 const p = document.createElement('p')
                 p.className = 'nominations-detail'
-                p.textContent = nomination.detail 
+                p.textContent = nomination.detail
                 entries.appendChild(p)
+                })
             })
         } catch (err) {
-            console.error('Could not load awards:', err)
+            console.error('Could not load nominations:', err)
         }
     }
+
+loadNominations()
     loadNominations()
   </script>
  
