@@ -194,6 +194,30 @@
     <p class="error" id="book-error" style="display:none">Something went wrong.</p>
   </div>
 
+  <!-- ── ADD NOMINATION ── -->
+  <h2>Add Nomination</h2>
+  <div>
+    <label>Year</label>
+    <input type="text" id="nom-year" placeholder="2025" />
+ 
+    <label>Category</label>
+    <select id="nom-category">
+      <option value="">Select a category</option>
+      <option>Best Book</option>
+      <option>Best Writing</option>
+      <option>Best Non-Fiction</option>
+      <option>Best Supporting Character</option>
+      <option>Best Character</option>
+    </select>
+ 
+    <label>Nominee</label>
+    <input type="text" id="nom-detail" placeholder="Aravind Adiga" />
+ 
+    <button onclick="addNomination()">Add Nomination</button>
+    <p class="success" id="nom-success" style="display:none">Nomination added!</p>
+    <p class="error" id="nom-error" style="display:none">Something went wrong.</p>
+  </div>
+
   <!-- ── ADD AWARD ── -->
   <h2>Add Award</h2>
   <div>
@@ -223,31 +247,7 @@
     <p class="success" id="award-success" style="display:none">Award added!</p>
     <p class="error" id="award-error" style="display:none">Something went wrong.</p>
   </div>
-
-   <!-- ── ADD NOMINATION ── -->
-   <h2>Add Nomination</h2>
-   <div>
-     <label>Year</label>
-     <input type="text" id="nom-year" placeholder="2025" />
- 
-     <label>Category</label>
-     <select id="nom-category">
-       <option value="">Select a category</option>
-       <option>Best Book</option>
-       <option>Best Writing</option>
-       <option>Best Non-Fiction</option>
-       <option>Best Supporting Character</option>
-       <option>Best Character</option>
-     </select>
- 
-     <label>Nominee</label>
-     <input type="text" id="nom-detail" placeholder="Aravind Adiga" />
- 
-     <button onclick="addNomination()">Add Nomination</button>
-     <p class="success" id="nom-success" style="display:none">Nomination added!</p>
-     <p class="error" id="nom-error" style="display:none">Something went wrong.</p>
-   </div>
-
+  
   <script>
     // Check if logged in
     const session = localStorage.getItem('sb-session')
